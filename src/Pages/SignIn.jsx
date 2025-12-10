@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import api from '../api'
 import '../Style.Module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import lock from '../Images/login-password-3.png'
@@ -20,7 +20,7 @@ const SignIn = () => {
         setLoading(true)
         event.preventDefault();
         try{
-          const response = await axios.post('http://localhost:3001/api/signin', {
+          const response = await api.post('/api/signin', {
             username,
             password
           });
