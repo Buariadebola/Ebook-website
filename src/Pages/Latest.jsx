@@ -11,12 +11,11 @@ const Latest = () => {
   const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
 
-  const GNEWS_API_KEY = process.env.REACT_APP_GNEWS_KEY;
   const PAGE_SIZE = 10;
 
   useEffect(() => {
     fetch(
-      `https://gnews.io/api/v4/search?q=books&lang=en&max=${PAGE_SIZE}&page=${page}&token=${GNEWS_API_KEY}`
+      `/api/news?page=${page}&pageSize=${PAGE_SIZE}&topic=books`
     )
       .then(res => res.json())
       .then(data => {
