@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { FaShoppingCart, FaHeart, FaBookmark, FaBookOpen, FaDownload, FaFileDownload} from "react-icons/fa";
+import { FaShoppingCart, FaHeart, FaBookmark, FaBookOpen, FaFileDownload} from "react-icons/fa";
 import { FavoritesContext } from '../Context/FavoriteContext';
 import { CartContext } from '../Context/CartProvider';
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
@@ -13,33 +13,8 @@ const Description = () => {
     const { addToCart} = useContext(CartContext);
 
   const location = useLocation();
-  const { img, title, author, genre, price, bookId, downloads, bookshelves, contentUrl, book } = location.state || {};
+  const { img, title, author, genre, price, bookId, downloads, bookshelves, book } = location.state || {};
 
-    const [bookText, setBookText] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const loadBookText = async () => {
-      if (!contentUrl) return;
-      setLoading(true);
-      try {
-        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(contentUrl);
-        const res = await fetch(proxyUrl);
-
-        if (!res.ok) throw new Error("Failed to fetch book text");
-
-        const text = await res.text();
-        setBookText(text);
-      } catch (err) {
-        console.error(err);
-        setBookText("Failed to load book text.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadBookText();
-  }, [contentUrl]);
 
 const handleAddToCart = (e) => {
   e.preventDefault();
@@ -97,7 +72,6 @@ const handleDownload = (formats) => {
         <h2><span>Downloads:</span> {downloads}</h2>
         <h2><span>Bookshelves:</span> {bookshelves}</h2>
         <button style={{ display: 'flex', gap: '10px'}}>Contact Seller<BiPhone style={{scale: '1.3'}}/></button>
-        {loading ? 'loading..' : ''}
       </div>
     </div>
   )
