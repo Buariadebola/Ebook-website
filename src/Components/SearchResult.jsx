@@ -27,6 +27,7 @@ const SearchResult = (props) => {
           : "",
       }}>
         <div className="search-result">
+          <img src={props.img} alt="" />
           <p>{props.title} - {props.author}</p>
         </div>
         </Link>
