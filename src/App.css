@@ -233,10 +233,21 @@ input{
 .search-icon img{
 	width: 25px;
 }
+#search-results .close-search{
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	background-color: lime;
+	color: rgb(13, 61, 0);
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
 #search-results{
 	list-style: none;
-	position: absolute;
-	top:40px;
+	position: fixed;
+	top:50px;
 	left: 0;
 	overflow: scroll;
 	overflow-x: visible;

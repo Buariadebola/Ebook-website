@@ -11,6 +11,7 @@ const Navbar = ({genre}) => {
 	  const [results, setResults] = useState([]);
 	  const [loading, setLoading] = useState(false);
 	  const [error, setError] = useState('');
+	  const [showResults, setShowResults] = useState(false);
 
   // Fetch books from Open Library by search
   const fetchBooks = async (e) => {
@@ -19,6 +20,7 @@ const Navbar = ({genre}) => {
 	setLoading(true);
 	setError('');
 	setResults([]);
+	setShowResults(true);
 	try {
 	  let url = 'https://gutendex.com/books?';
 
@@ -39,7 +41,10 @@ const Navbar = ({genre}) => {
 		useEffect(() => {
 		  if (!search.trim()) {
 			setResults([]);
-		  }
+			setShowResults(false);
+		} else {
+			setShowResults(true);
+		}
 		}, [search]);
 
   return (
@@ -55,8 +60,14 @@ const Navbar = ({genre}) => {
     		onSubmit={fetchBooks}
 			/>
 			<div>
-				{ (results.length > 0 || loading || error) && (
+				{ (showResults && (results.length > 0 || loading || error)) && (
 					<div id="search-results">
+						<button className='close-search' onClick={() => {
+								setShowResults(false);
+								setResults([]);
+								setError('');
+								setLoading(false);
+							}}>Close</button>
 					{results.length > 0 ? (
 						results.map(book => (
 						<SearchResult
