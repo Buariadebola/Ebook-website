@@ -1,6 +1,5 @@
 import React from 'react'
 import searchicon from '../Images/magnifying-glass.png'
-import SearchResult from './SearchResult'
 
 const AutoSearchBar = ({value, onChange, onSubmit }) => {
   return (
@@ -14,7 +13,6 @@ const AutoSearchBar = ({value, onChange, onSubmit }) => {
                 onChange={onChange} />
                 <button type="submit">search</button>
         </form>
-        <SearchResult/>
         </div>
     </>
   )

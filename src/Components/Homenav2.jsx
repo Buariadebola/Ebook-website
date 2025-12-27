@@ -16,13 +16,8 @@ const Homenav2 = () => {
 			<img className="menu-icon" src={menuicon} alt="" />
 		</button>
         <ul className={`homenav ${slide ? 'show' : ''}`} style={{zIndex: '2'}}>
-        	<li>About</li>
-          <hr />
-        	<li>Contact</li>
-          <hr />
-        	<li><Link to="/signin">Sign In</Link></li>
-          <hr />
-        	<li><Link to="/signup">Sign Up</Link></li>
+        	<Link to="/signin">Sign In</Link>
+        	<Link to="/signup">Sign Up</Link>
         </ul>
     </>
   )

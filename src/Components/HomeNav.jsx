@@ -16,13 +16,10 @@ const HomeNav = () => {
 			<img className="menu-icon" src={menuicon} alt="" />
 		</button>
         <ul className={`homenav ${slide ? 'show' : ''}`}>
-        	<li><Link to="/home">Home</Link></li>
-          <hr />
-        	<li><Link to="/library">Library</Link></li>
-          <hr />
-        	<li><Link to="/latest">Latest</Link></li>
-          <hr />
-        	<li><Link to="/signin">Sign In</Link></li>
+        	<Link to="/home">Home</Link>
+        	<Link to="/library">Library</Link>
+        	<Link to="/latest">Latest</Link>
+        	<Link to="/signin">Sign In</Link>
         </ul>
     </>
   )
